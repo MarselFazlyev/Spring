@@ -26,6 +26,7 @@ public class SignUpServiceImpl implements SignUpService {
 
         if(passwordBlackLIst.contains(password)){
             throw new IllegalArgumentException("Ваш пароль был уже взломан");
+            
         }
 
         emailValidator.validate(email);

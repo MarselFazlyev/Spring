@@ -11,7 +11,7 @@ public class EmailValidatorImplByLength implements EmailValidator{
     @Override
     public void validate(String email) {
         if(email.length()<minLength){
-            throw new IllegalArgumentException("Dlina pochty nekorrektna!");
+            throw new IllegalArgumentException("Длина почты некорректна!");
         }
 
     }

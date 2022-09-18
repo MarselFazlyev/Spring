@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="application.properties"/>
+
+
+    <bean id="blackList" class="innopolisLection.validators.PasswordBlackLIstImpl"/>
+
+    <bean id="passwordValidator" class="innopolisLection.validators.PasswordValidatorByLengthImpl">
+        <constructor-arg name="minLength" value="${validator.password.minLength}"/>
+    </bean>
+
+    <bean id="emailValidator" class="innopolisLection.validators.EmailValidatorRegexImpl">
+        <property name="pattern" value="${validator.email.regex}"/>
+    </bean>
+
+    <bean id="signUpService" class="innopolisLection.service.SignUpServiceImpl">
+        <constructor-arg name="passwordBlackLIst" ref="blackList"/>
+        <constructor-arg name = "emailValidator" ref="emailValidator"/>
+        <constructor-arg name="passwordValidator" ref="passwordValidator"/>
+    </bean>
+
+
+</beans>
