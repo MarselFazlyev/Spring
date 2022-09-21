@@ -1,10 +1,11 @@
-package innopolisLection.app;
+package innopolis.app;
 
-import innopolisLection.service.SignUpService;
-import innopolisLection.service.SignUpServiceImpl;
-import innopolisLection.validators.*;
 
-public class  Main {
+import innopolis.service.SignUpService;
+import innopolis.service.SignUpServiceImpl;
+import innopolis.validators.*;
+
+public class Main {
     public static void main(String[] args) {
 
         // валидация по длине почты и пароля
@@ -19,8 +20,8 @@ public class  Main {
         PasswordValidator passwordValidator = new PasswordValidatorByCharacterImpl();
         // в статичном поле BROKEN_PASSWORDS класса PasswordBlackLIstImpl() лежат все взломанные пароли
         PasswordBlackLIst passwordBlackLIst = new PasswordBlackLIstImpl();
-        SignUpService signUpService = new SignUpServiceImpl(emailValidator,passwordValidator, passwordBlackLIst);
-        signUpService.signUp("abrakadabra@milo.ru","password");
+        SignUpService signUpService = new SignUpServiceImpl(emailValidator, passwordValidator, passwordBlackLIst);
+        signUpService.signUp("abrakadabra@milo.ru", "password#");
 
     }
 }

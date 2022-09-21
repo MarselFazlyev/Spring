@@ -1,11 +1,11 @@
-package innopolisLection.app;
+package innopolis.app;
 
-import innopolisLection.service.SignUpService;
-import innopolisLection.service.SignUpServiceImpl;
+import innopolis.service.SignUpService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class Main2 {
+public class
+Main2 {
     public static void main(String[] args) {
 
         //создание конфигурационного объекта Spring
@@ -15,6 +15,6 @@ public class Main2 {
         SignUpService signUpService = applicationContext.getBean(SignUpService.class);
 
         //работа объекта-бина, созданного и вызванного через Spring
-        signUpService.signUp("Test@mail.ru", "TestPassword#");
+        signUpService.signUp("Test@mail.ru", "Test#");
     }
 }
