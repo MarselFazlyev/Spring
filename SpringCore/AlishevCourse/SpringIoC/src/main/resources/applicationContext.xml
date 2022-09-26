@@ -12,7 +12,13 @@
     <bean id="ClassicalMusicBean" class="org.example.model.ClassicalMusic">
     </bean>
 
-    <bean id="MyMusicBean" class="org.example.model.MyMusic">
+    <bean id="MyMusicBean" class="org.example.model.MyMusic"
+    init-method="doMyInit"
+    destroy-method="doMyDestroy">
+    </bean>
+
+    <bean id="ClassicalMusicWithFabricMethod" class="org.example.model.fabric_method.ClassicalMusicWithFabricMethod"
+          factory-method="getClassicalMusic">
     </bean>
 
 
@@ -27,10 +33,8 @@
                 <ref bean="MyMusicBean"/>
             </list>
         </property>
-
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
-
     </bean>
 
 </beans>
