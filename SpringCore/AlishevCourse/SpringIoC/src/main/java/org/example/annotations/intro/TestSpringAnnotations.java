@@ -1,11 +1,11 @@
-package org.example.annotations_intro;
+package org.example.annotations.intro;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestSpringAnnotations {
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("annotationsApplicationContext.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("AppContextIntro.xml");
 //        Music music = applicationContext.getBean(MyMusic.class);
 //        Music music1 = applicationContext.getBean(RockMusic.class);
 //        Music music2 = applicationContext.getBean(ClassicalMusic.class);

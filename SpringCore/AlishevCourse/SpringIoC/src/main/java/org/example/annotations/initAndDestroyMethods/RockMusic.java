@@ -1,8 +1,10 @@
-package org.example.annotations_intro;
+package org.example.annotations.initAndDestroyMethods;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
+@Scope("prototype")
 public class RockMusic implements Music {
 
     @Override

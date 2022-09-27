@@ -1,4 +1,4 @@
-package org.example.annotations_intro;
+package org.example.annotations.value;
 
 public interface Music {
     String getSong();
