@@ -143,6 +143,52 @@ public MusicPlayer(ClassicalMusic classicalMusic) {this.classicalMusic = classic
 Аннотацию @Autowired можно использовать на полях, сеттерах, конструкторах\
 Аннотация @Autowired внедрит зависимость в приватное поле  даже если нет конструктора или сеттера. Делает она это с помощью Рефлексии (Java Reflection API)
 
+### Аннотация @Qualifier
+когда для зависимости потенциально подходит несколько бинов, используется для уточнения,какой бин использовать, аннотация @Qualifier
+```
+@Autowired
+//указываем id того бина, который хотим внедрить
+@Qualifier("rockMusic")
+private Music music;
+
+```
+Когда внедрение производится  с помощью конструктора, для уточнения зависимостей небходимо использовать такой синтаксис:
+```
+@Autowired
+public MusicPlayer (@Qualifier("rockMusic") Music music1,
+                    @Qualifier("classicalMusic") Music music2) {
+    this.music1 = music1;
+    this.music2 = music2;                     
+}
+```
+Аннотацию @Qualifier необходимо использовать рядом с аргументами конструктора
+
+### Варианты конфигурации Spting приложения 
+- вся конфигурация на xml
+- XML+ аннотации 
+- Java код + аннотации (xml конфигурации больше нет)   
+
+## @Configuration 
+Помечает Java класс,который мы хотим использовать для  конфигурации Spring приложения
+    
+    ```
+    @Configuration
+    public class SpringConfig {
+    }
+    ```
+Пустой конфигурационный Java класс равен по функционалу пустому конфигурационному XML файлу\
+Для каждого XML тега есть соответствующая аннотация\
+Если раньше использовали для задания конфигурации **СlassPathXmlApplicationContext**,то для создания контекста с помощью конфигурационного Java класса используется 
+**AnnotationConfigApplicationContext**.\
+
+**@PropertySource**- для внедрения значений из внешнего файла (в аргументах прописывается путь до файла, содержащего внедряемые значения).
+```
+@PropertySource(classpath:musicPlayer.properties)
+```
+
+
+
+
 
 
 
