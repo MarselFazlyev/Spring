@@ -17,8 +17,6 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 @EnableWebMvc
 public class SpringConfig implements WebMvcConfigurer {
 
-    //TODO Проект не запускается !((( Разобраться, где ошибка!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
     private final ApplicationContext applicationContext;
 
     @Autowired
