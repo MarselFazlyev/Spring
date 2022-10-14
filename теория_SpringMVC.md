@@ -159,7 +159,26 @@ public String helloPage(Model model){
 
 }
 ```
+### CRUD
+**crud-операции**- четыре базовы функции, используемые при работе с БД
+- create
+- read
+-update
+-delete
 
+чаще всего CRUD-приложжения являются web-приложениями. То есть, доступ к БД предоставляется через протокол HTTP.
+ 
+ пример CRUD'a для сущности Post
+
+ HTTP метод    URL              Действие
+
+ GET           /posts           Получаем все записи(**READ**)
+ POST          /posts           Создаем новую запись (**CREATE**)
+ GET           /posts/new       HTML форма создания записи
+ GET           /posts/:id/edit  HTML форма редактирования записи
+ GET           /posts/:id       Получаем одну запись(**READ**)
+ PATCH         /posts/:id       Обновляем запись (**UPDATE**) 
+ DELETE        /posts/:id       Удаляем запись (**DELETE**)
 
 
 
