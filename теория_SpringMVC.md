@@ -240,10 +240,39 @@ public String post(@ModelAttribute ("person") Person person){
 Чтобы на стороне Spring при передаче метод PATCH был распознан, необходимо создать фильтр, котороый будет итать значения этого скрытого поля.\
 Делается это в конфигурационном файле Spring (в проекте SpringMVCApp3 есть пример - 2 метода **@Override onStartup()** и **registerHiddenFieldFilter()** )
 
-
-
-
-
+### Валидация форм (проект SpringMVCApp4)
+для того,чтобы в формы HTML можно было вносить только корректные значения, необходимо:
+- скачать зависимость в pom.xml
+- установить аннотации (прописав в них правила валидации для соответствующего поля) непосредственно над полями, которые надо провалидировать
+```
+public class Person{
+    // валидация поля имени, чтобы это поле не было пустым
+    @NotEmpty(message= "Name should not be empty!")
+    // валидация длины поля 'name'
+    @Size(min = 2,max = 30,message = "Name should be between 2 and 30 symbols")
+    private String name;
+    
+    //аннотация минимального числового  значения 
+    @Min(value = 0, message = "Age should be greater than 0!")
+    private int age;
+    
+    @NotEmpty(message = "Email should not be empty!")
+    //аннотация, которая следит, чтобы в поле лежал только email
+    @Email(message = "Email should be valid")
+    private String email;
+}
+```
+- поставить перед получаемыми из формы объектами аннотацию **@Valid**, если условия нарушаются, то появляется ошибка, и эта ошибка помещается в отдельный объект **BindingResult**
+```
+@PostMapping()
+public String create(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult){
+    personDAO.save(person);
+    return "redirect:/people";
+    //ВАЖНО!!! ОБЪЕКТ BindingResult нужно ставить сразу после модели, которая валидируется!!!!  
+}
+```
+М.И. Примечание:\
+При использовании аннотаций из пакета **jakarta**, не выбрасывались соответствующие ошибки валидации полей,как ожидалось, сущность спокойно создавалась, причем некорректно, с некорректными параметрами. Данный косяк устранился только после отката зависимости **hibernate-validator** до версии 6.1.6.Final(c этой версии тразитивно загружается зависимость javax.validation) и навешивания аннотаций на поля сущности класса Person и  **@Valid** на валидирование сущности в контроллере из javax.validation.\ Что-то не так с пакетом jakarta...  
 
 
 
