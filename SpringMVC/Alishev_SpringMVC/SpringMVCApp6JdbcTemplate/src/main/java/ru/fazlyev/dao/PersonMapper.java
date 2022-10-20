@@ -6,6 +6,7 @@ import ru.fazlyev.models.Person;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+//класс в итоге заменен на BeanPropertyRowMapper<>(Person.class) Spring ссам отображает классы в строки в бд
 public class PersonMapper implements RowMapper<Person> {
     @Override
     public Person mapRow (ResultSet rs, int rowNum) throws SQLException {
