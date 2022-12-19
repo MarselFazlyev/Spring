@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ru.fazlyev</groupId>
-	<artifactId>FirstSecurityApp1</artifactId>
+	<artifactId>SecurityApp2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>FirstSecurityApp1</name>
+	<name>SecurityApp2</name>
 	<description>Project with Spring Boot and Spring Security</description>
 	<properties>
 		<java.version>11</java.version>
