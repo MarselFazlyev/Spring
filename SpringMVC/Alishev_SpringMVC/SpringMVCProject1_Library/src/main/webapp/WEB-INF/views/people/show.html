@@ -1,15 +1,24 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="ru" xmlns:th="http://thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <title>Информация о читателе</title>
 </head>
 <body>
-<p th:text = "'ID читателя: '+ ${person.getId()}">VAlUE</p>
-<p th:text = "'ФИО читателя: '+ ${person.getFull_name()}">VALUE</p>
-<p th:text = "'Год рождения: '+ ${person.getYear()}">VALUE</p>
+<p th:text="'ID читателя: '+ ${person.getId()}">VAlUE</p>
+<p th:text="'ФИО читателя: '+ ${person.getFull_name()}">VALUE</p>
+<p th:text="'Год рождения: '+ ${person.getYear()}">VALUE</p>
 
 <a th:href="@{/people}"
-   th:text ="'на главную страницу'"></a>
+   th:text="'на главную страницу'"></a>
+<br>
+<a th:href="@{/people/{id}/edit(id=${person.getId()})}"
+   th:text="'Обновить данные читателя'"></a>
+
+
+<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
+    <input type="submit" value="Удалить читателя"/>
+</form>
+
 </body>
 </html>

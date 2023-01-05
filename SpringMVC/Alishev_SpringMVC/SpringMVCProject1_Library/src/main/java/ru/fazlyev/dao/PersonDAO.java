@@ -29,7 +29,7 @@ public class PersonDAO {
     }
 
     public void update(int id,Person person) {
-        jdbcTemplate.update("update person set (full_name,year) values (?,?) where id=?", person.getFull_name(),
+        jdbcTemplate.update("update person set full_name=?,year=? where id=?", person.getFull_name(),
                 person.getYear(),id);
     }
 
@@ -42,6 +42,8 @@ public class PersonDAO {
                 new BeanPropertyRowMapper<>(Person.class)).stream()
                 .findAny().orElse(null);
     }
+
+
 
 
 }
