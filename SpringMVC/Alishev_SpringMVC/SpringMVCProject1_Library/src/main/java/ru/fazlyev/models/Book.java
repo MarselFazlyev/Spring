@@ -12,13 +12,13 @@ import lombok.NoArgsConstructor;
 public class Book {
     private int id;
 
-    private int owner_Id;
+    private Integer owner_id;
 
     private String title;
 
     private String author;
 
-    private int year_of_release;
+    private Integer year_of_release;
 
     // todo навесить аннотации!!!
 

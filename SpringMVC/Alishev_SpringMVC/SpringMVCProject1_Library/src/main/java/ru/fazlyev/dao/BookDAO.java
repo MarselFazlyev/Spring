@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import ru.fazlyev.models.Book;
 
+
 import java.util.List;
 
 @Component
@@ -18,6 +19,16 @@ public class BookDAO {
     }
 
     public List<Book> index(){
-        return jdbcTemplate.query("select * from book ",new BeanPropertyRowMapper<>(Book.class));
+        return jdbcTemplate.query("select * from book",new BeanPropertyRowMapper<>(Book.class));
+    }
+
+    public void save(Book book) {
+         jdbcTemplate.update("insert into book (title,author,year_of_release) values (?,?,?)",
+             book.getTitle(),book.getAuthor(),book.getYear_of_release());
+    }
+
+    public Book showBook (int id) {
+        return jdbcTemplate.query("select * from book where id=?",new Object[]{id},
+                new BeanPropertyRowMapper<>(Book.class)).stream().findAny().orElse(null);
     }
 }

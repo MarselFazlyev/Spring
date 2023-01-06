@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация по книге</title>
+</head>
+<body>
+<p th:text="'ID книги: '+ ${book.getId}"></p>
+<p th:text="'Название книги: '+ ${book.getTitle}"></p>
+<p th:text="'Автор: '+ ${book.getAuthor}"></p>
+<p th:text="'Год издания: '+ ${book.getYear_of_release}"></p>
+
+<p
+   th:text="'Статус книги: Книга свободна'"
+   th:if="${book.getOwner_id}==null">view</p>
+
+<input type="submit" value="Назначить книгу" th:if="${book.getOwner_id}==null"/>
+
+
+</body>
+</html>
