@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import ru.fazlyev.models.Book;
 
 
+import java.lang.management.OperatingSystemMXBean;
 import java.util.List;
 
 @Component
@@ -30,5 +31,15 @@ public class BookDAO {
     public Book showBook (int id) {
         return jdbcTemplate.query("select * from book where id=?",new Object[]{id},
                 new BeanPropertyRowMapper<>(Book.class)).stream().findAny().orElse(null);
+    }
+
+    public  List<Book> returnBooksByPersonId(int id) {
+        return jdbcTemplate.
+                query("select * from book where" +
+                " owner_id = ?",new Object[]{id},new BeanPropertyRowMapper<>(Book.class));
+    }
+
+    public void freeBook(int id){
+        jdbcTemplate.update("update book set owner_id = null where id=?",id);
     }
 }

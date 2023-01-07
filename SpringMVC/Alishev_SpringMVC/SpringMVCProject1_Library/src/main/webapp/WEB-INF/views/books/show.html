@@ -10,12 +10,15 @@
 <p th:text="'Автор: '+ ${book.getAuthor}"></p>
 <p th:text="'Год издания: '+ ${book.getYear_of_release}"></p>
 
-<p
-   th:text="'Статус книги: Книга свободна'"
-   th:if="${book.getOwner_id}==null">view</p>
+<p th:text="'Эта книга свободна'"
+   th:if="${book.getOwner_id()}== null" >
 
-<input type="submit" value="Назначить книгу" th:if="${book.getOwner_id}==null"/>
-
+<div th:if="${person.getFull_name()}!=null">
+    <p th:text="'Книга сейчас у: '+ ${person.getFull_name()}"></p>
+    <form th:method="PATCH" th:action="@{/books/{id}(id=${book.getId()})}">
+        <input type="submit" value="Освободить книгу"/>
+    </form>
+</div>
 
 </body>
 </html>

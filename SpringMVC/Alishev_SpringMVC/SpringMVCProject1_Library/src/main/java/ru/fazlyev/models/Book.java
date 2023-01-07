@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class Book {
-    private int id;
+    private Integer id;
 
     private Integer owner_id;
 

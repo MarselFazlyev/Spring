@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
 @Builder
 public class Person {
 
-    private int id;
+    private Integer id;
 
     @NotEmpty(message = "Name cannot be empty.")
     @Pattern(regexp = "[A-Z]\\w+, [A-Z]\\w+, [A-Z]\\w+", message = "Full name should be in this format: lastname, firstname, patronymic")

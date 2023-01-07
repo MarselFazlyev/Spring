@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:th="http://thymeleaf.org" >
+<html lang="ru" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Информация о читателе</title>
@@ -9,12 +9,21 @@
 <p th:text="'ФИО читателя: '+ ${person.getFull_name()}">VALUE</p>
 <p th:text="'Год рождения: '+ ${person.getYear()}">VALUE</p>
 
+
+<p th:text="'Этот человек пока не брал книги'"
+   th:if="${books.isEmpty()}" else="'Cписок книг:'">
+<div th:each="book: ${books}">
+    <a th:text="'Название: ' + ${book.getTitle() + '  Автор: ' + book.getAuthor() + '  Год издания: '+ book.getYear_of_release()}">Книга</a>
+</div>
+
+<br>
+
 <a th:href="@{/people}"
    th:text="'на главную страницу'"></a>
 <br>
 <a th:href="@{/people/{id}/edit(id=${person.getId()})}"
-   th:text="'Обновить данные читателя'"></a>
-
+   th:text="'Обновить данные читателя'">value</a>
+<br>
 
 <form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
     <input type="submit" value="Удалить читателя"/>
