@@ -39,7 +39,18 @@ public class BookDAO {
                 " owner_id = ?",new Object[]{id},new BeanPropertyRowMapper<>(Book.class));
     }
 
+    public void update(int id,Book book) {
+        jdbcTemplate.update("update book set owner_id=?,title=?,author=?,year_of_release=? where id=?",book.getOwner_id(),
+                book.getTitle(),book.getAuthor(),book.getYear_of_release(),id);
+    }
+
+    public void delete(){}
+
     public void freeBook(int id){
         jdbcTemplate.update("update book set owner_id = null where id=?",id);
+    }
+
+    public void assignOwner(int id, int owner_id ) {
+        jdbcTemplate.update("update book set owner_id=? where id=? ",id,owner_id);
     }
 }

@@ -9,11 +9,18 @@
 <p th:text="'ФИО читателя: '+ ${person.getFull_name()}">VALUE</p>
 <p th:text="'Год рождения: '+ ${person.getYear()}">VALUE</p>
 
+<div  th:if="${books.isEmpty()}">
+    <p th:text="'Этот человек пока не взял книги'">
+</div>
 
-<p th:text="'Этот человек пока не брал книги'"
-   th:if="${books.isEmpty()}" else="'Cписок книг:'">
-<div th:each="book: ${books}">
-    <a th:text="'Название: ' + ${book.getTitle() + '  Автор: ' + book.getAuthor() + '  Год издания: '+ book.getYear_of_release()}">Книга</a>
+<div th:if="${!books.isEmpty()}">
+    <hr/>
+    <b> Cписок книг:</b>
+    <br>
+    <table th:each="book: ${books}">
+    <tr th:text="'Название: ' + ${book.getTitle() + '  Автор: ' + book.getAuthor() + '  Год издания: '+ book.getYear_of_release()}">Книга</tr>
+    </table>
+    </hr>
 </div>
 
 <br>

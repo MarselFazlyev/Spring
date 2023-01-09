@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -18,10 +19,10 @@ public class Person {
 
     private Integer id;
 
-    @NotEmpty(message = "Name cannot be empty.")
-    @Pattern(regexp = "[A-Z]\\w+, [A-Z]\\w+, [A-Z]\\w+", message = "Full name should be in this format: lastname, firstname, patronymic")
+    @NotEmpty(message = "Имя не должно быть пустым")
+    @Size(min = 2,max = 100,message = "Имя должно быть от 2 до 100 символов длиной")
     private String full_name;
 
-    @Size(min = 4, max = 4, message = "wrong input,size of year should be 4 digits")
+    @Min(value = 1900,message = "Год рождения должен быьб больше, чем 1900")
     private int year;
 }
